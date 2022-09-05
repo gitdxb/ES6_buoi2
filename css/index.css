@@ -61,3 +61,21 @@ body{
 #glasses{
     transition: all 0.5s;
 }
+#glassesInfo .myTitle {
+    font-size: 25px;
+}
+#glassesInfo .stockWrapper {
+    margin: 8px 0;
+}
+ 
+#glassesInfo .myPrice {
+    padding: 4px 7px;
+    border-radius: 4px;
+    color: white;
+    background-color: red;
+    margin-right: 3px;
+}
+#glassesInfo span {
+    color: rgb(7, 210, 7);
+    font-style: italic;
+}

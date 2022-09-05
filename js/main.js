@@ -9,4 +9,47 @@ let dataGlasses = [
     { id: "G8", src: "./img/g8.jpg", virtualImg: "./img/v8.png", brand: "Polo", name: "NATTY ICE", color: "Red, Black", price: 120, description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, unde enim." },
     { id: "G9", src: "./img/g9.jpg", virtualImg: "./img/v9.png", brand: "Coarch", name: "MIDNIGHT VIXEN REMIX", color: "Blue, Black", price: 120, description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit consequatur soluta ad aut laborum amet." }
 ];
+let showGlasses = () => {
+    let content = ``;
+    dataGlasses.map((eachPair) => {
+        content += `
+            <div class="col-4">
+                <img style="cursor: pointer;" onclick="glassesOn('${eachPair.id}')" class="img-fluid" src="${eachPair.src}" alt="">
+            </div>
+        `;
+    });
+    document.querySelector("#vglassesList").innerHTML = content;
+};
+showGlasses();
 
+let glassesOn = (id) => {
+    dataGlasses.map((eachPair) => {
+        if (eachPair.id === id) {
+            let { virtualImg, brand, name, color, price, description } = eachPair;
+            document.querySelector("#avatar").innerHTML = `
+                <img src="${virtualImg}" alt="">
+            `;
+            document.querySelector("#glassesInfo").innerHTML = `
+                <h2 class="myTitle">${name} - ${brand}(${color})</h2>
+                <div class="stockWrapper">
+                    <a href="#" class="myPrice">${price}</a>
+                    <span>Stocking</span>
+                </div>
+                <p>${description}</p>
+            `;
+            document.querySelector("#glassesInfo").style.display = "block";
+        }
+    });
+};
+window.glassesOn = glassesOn;
+
+let glassesOff = (glassesOff) => {
+    if (glassesOff) {
+        // wear them on
+        document.querySelector(".vglasses__model img").style.display = "block";
+    } else {
+        // take them off
+        document.querySelector(".vglasses__model img").style.display = "none";
+    }
+};
+window.removeGlasses = glassesOff;
